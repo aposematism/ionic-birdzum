@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <h3>Enter the details of your new account below.</h3>
+  <p>When you're finished, click "sign up" to create an account.</p>
+
+	<ion-item>
+		<ion-label color="primary" fixed>Username:</ion-label>
+		<ion-input placeholder="Enter your username here" [(ngModel)]="username"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label color="primary" fixed>Password:</ion-label>
+		<ion-input placeholder="Enter your password here" [(ngModel)]="password" type="password"></ion-input>
+	</ion-item>
+	<ion-item>
+		<ion-label color="primary" fixed>Email:</ion-label>
+		<ion-input placeholder="Enter your email here" [(ngModel)]="email" type="email"></ion-input>
+	</ion-item>
+
+  <button ion-button color="primary" (click)="createAcc()">Create account</button>
+
+</ion-content>
+
