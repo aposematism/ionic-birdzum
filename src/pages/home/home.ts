@@ -14,13 +14,14 @@ export class HomePage {
   }
 
   pushPage(){
+    this.doAlert();
     this.navCtrl.push(WelcomePage, {username:this.username});
   }
 
   doAlert(){
     let alert = this.loginAlert.create({
      title: 'Welcome!',
-     message: 'Blast from the past!',
+     message: 'Welcome to SWEN325 App, Dear ' + this.username,
      buttons: ['Ok']
     });
     alert.present()
