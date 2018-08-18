@@ -7,14 +7,9 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <ion-label floating>Username</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label floating>Name: </ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-    <button ion-button full (click)="pushPage()">Login In</button>
-    <button ion-button color="dark" full>Sign Up</button>
+    <button ion-button full (click)="pushPage()">Enter</button>
   </ion-list>
 </ion-content>

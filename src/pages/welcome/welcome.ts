@@ -8,11 +8,11 @@ import { NavParams } from 'ionic-angular';
   templateUrl: 'welcome.html'
 })
 export class WelcomePage {
-
   username = null;
+  //value:any;
   constructor(public loginAlert : AlertController, public navCtrl: NavController, public navParams : NavParams){
     this.username = this.navParams.get('username');
-
+    //this.value = this.navParams.get('username');
   }
   doAlert(){
     let alert = this.loginAlert.create({

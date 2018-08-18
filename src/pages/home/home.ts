@@ -8,14 +8,13 @@ import { WelcomePage } from '../welcome/welcome'
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  username:any;
   constructor(public loginAlert : AlertController, public navCtrl: NavController){
 
   }
 
   pushPage(){
-
-    this.navCtrl.push(WelcomePage, {username:2});
+    this.navCtrl.push(WelcomePage, {username:this.username});
   }
 
   doAlert(){
