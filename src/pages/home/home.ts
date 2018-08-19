@@ -18,6 +18,10 @@ export class HomePage {
     this.navCtrl.push(WelcomePage, {username:this.username});
   }
 
+  signUp(){
+    
+  }
+
   doAlert(){
     let alert = this.loginAlert.create({
      title: 'Welcome!',
