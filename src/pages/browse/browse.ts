@@ -7,6 +7,10 @@ import { ClassifyPage } from '../classify/classify';
   templateUrl: 'browse.html'
 })
 export class BrowsePage {
+	
+	nativity:string = "any";
+	activity:string = "any";
+	habitat:string = "any";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
