@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Bird Browser</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+  <ion-item>
+    <ion-label>Habitat</ion-label>
+    <ion-select [(ngModel)]="habitat" interface="popover">
+      <ion-option value="land">Land</ion-option>
+      <ion-option value="sea">Sea</ion-option>
+      <ion-option value="any">Any</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Activity</ion-label>
+    <ion-select [(ngModel)]="activity" interface="popover">
+      <ion-option value="diurnal">Diurnal</ion-option>
+      <ion-option value="nocturnal">Nocturnal</ion-option>
+      <ion-option value="any">Any</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Nativity</ion-label>
+    <ion-select [(ngModel)]="nativity" interface="popover">
+      <ion-option value="native">Native</ion-option>
+      <ion-option value="foreign">Foreign</ion-option>
+      <ion-option value="any">Any</ion-option>
+    </ion-select>
+  </ion-item>
+  </ion-list>
+  
+  <button ion-button icon-start>
+  <ion-icon name="search"></ion-icon>
+    Search
+  </button>
+</ion-content>
+
