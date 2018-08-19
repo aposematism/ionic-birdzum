@@ -1,12 +1,9 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyApp } from './app.component';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { firebaseConfig } from '../config';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -14,10 +11,22 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/login/login';
+import { environment } from '../environments/environment';
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { AuthenticationProvider } from '../providers/authentication/authentication';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+export const firebaseConfig = {
+  fire: {
+    apiKey: "AIzaSyAmJDjH8aTqi-c4HHtjADFBODHslpnQplE",
+    authDomain: "birdzum.firebaseapp.com",
+    databaseURL: "https://birdzum.firebaseio.com",
+    projectId: "birdzum",
+    storageBucket: "birdzum.appspot.com",
+    messagingSenderId: "424306382279"
+  }
+}
 
 @NgModule({
   declarations: [
@@ -32,9 +41,9 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig.fire),
-    FormsModule,
-    FormControlName
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -49,9 +58,10 @@ import { AuthenticationProvider } from '../providers/authentication/authenticati
   providers: [
     StatusBar,
     SplashScreen,
-    AngularFireAuth,
+    AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthenticationProvider
   ]
 })
-export class AppModule {}
+export class AppModule {
+
+}

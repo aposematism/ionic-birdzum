@@ -1,4 +1,4 @@
-  export const firebaseConfig = {
+  export const environment = {
     fire: {
       apiKey: "AIzaSyAmJDjH8aTqi-c4HHtjADFBODHslpnQplE",
       authDomain: "birdzum.firebaseapp.com",

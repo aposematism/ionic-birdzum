@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
+import { IonicPageModule, NavController, NavParams } from 'ionic-angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 import { LoginPage } from './login';
+import { WelcomePage } from '../welcome/welcome'
 
 @NgModule({
   declarations: [
@@ -10,39 +14,7 @@ import { LoginPage } from './login';
     IonicPageModule.forChild(LoginPage),
   ],
 })
-export class LoginPageModule implements OnInit {
-    loginForm: FormGroup;
+export class LoginPageModule{
+    constructor(private navCtrl: NavController, private navParams: NavParams) {}
 
-    constructor(private auth: AuthenticationProvider, private formBuilder: FormBuilder, private navCtrl: NavController, private navParams: NavParams) {}
-
-    ngOnInit() {
-        this.initLoginForm();
-    }
-
-    initLoginForm() {
-        this.loginForm = this.formBuilder.group({
-            email: ['', [Validators.required, Validators.email]],
-            password: ['', [Validators.required]]
-        });
-    }
-
-    register() {
-        this.auth.register(this.loginForm.value)
-        .then(response => {
-            this.navCtrl.setRoot(TabsPage);
-        })
-        .catch(error => {
-            // handle error by showing alert
-        })
-    }
-
-    login() {
-        this.auth.login(this.loginForm.value)
-        .then(response => {
-            this.navCtrl.setRoot(TabsPage);
-        })
-        .catch(error => {
-            // handle error by showing alert
-        })
-    }
 }
