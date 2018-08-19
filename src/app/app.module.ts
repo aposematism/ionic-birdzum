@@ -11,11 +11,14 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/login/login';
-import { environment } from '../environments/environment';
+import { AuthService } from '../providers/authentication/auth.service';
+import { SignupPage } from '../pages/signup/signup';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { NgxErrorsModule } from '@ultimate/ngxerrors';
+
 
 export const firebaseConfig = {
   fire: {
@@ -36,14 +39,16 @@ export const firebaseConfig = {
     HomePage,
     TabsPage,
     WelcomePage,
-    LoginPage
+    LoginPage,
+    SignupPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig.fire),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgxErrorsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,12 +58,14 @@ export const firebaseConfig = {
     HomePage,
     TabsPage,
     WelcomePage,
-    LoginPage
+    LoginPage,
+    SignupPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
