@@ -35,9 +35,21 @@
   </ion-item>
   </ion-list>
   
-  <button ion-button icon-start>
+  <button ion-button (click)="search()" icon-start>
   <ion-icon name="search"></ion-icon>
     Search
   </button>
+   
+  <ion-list inset>
+    <ion-item *ngFor="let item of searchResults" (click)="edit(item)">
+    <ion-thumbnail item-start>
+      <img src={{item.img}}>
+    </ion-thumbnail>
+    <h2>{{ item.name }}</h2>
+    <p>{{ item.description }}</p>
+    <button ion-button clear item-end>View</button>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
 
