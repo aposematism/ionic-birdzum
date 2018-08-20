@@ -46,6 +46,7 @@ export class BrowsePage {
 			habitat:"land",
 			nativity:"native",
 			description:"Small and brown with a long beak."
+			img:"img/thumbnail-kiwi.png">
 		},
 		{
 			name:"Kereru",
@@ -53,6 +54,7 @@ export class BrowsePage {
 			habitat:"land",
 			nativity:"native",
 			description:"Big, fat, likes berries."
+			img:"img/thumbnail-kereru.png">
 		},
 		{
 			name:"Seagull",
@@ -60,13 +62,15 @@ export class BrowsePage {
 			habitat:"sea",
 			nativity:"foreign",
 			description:"Steals chips."
+			img:"img/thumbnail-seagull.png">
 		},
 		{
 			name:"Pigeon",
 			activity:"diurnal",
 			habitat:"land",
 			nativity:"foreign",
-			description:"Sky rat."
+			description:"Crrroooo"
+			img:"img/thumbnail-pigeon.png">
 		}
 	
 	];

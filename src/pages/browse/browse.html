@@ -42,7 +42,12 @@
   
   <ion-list inset>
     <ion-item *ngFor="let item of searchResults" (click)="edit(item)">
-      {{item.name}}
+    <ion-thumbnail item-start>
+      <img src="img/thumbnail-totoro.png">
+    </ion-thumbnail>
+    <h2>{{ item.name }}</h2>
+    <p>{{ item.description }}</p>
+    <button ion-button clear item-end>View</button>
     </ion-item>
   </ion-list>
 
