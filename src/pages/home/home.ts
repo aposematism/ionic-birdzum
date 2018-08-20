@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
 import { WelcomePage } from '../welcome/welcome'
 import { AlertController } from 'ionic-angular';
 import { ListPage } from '../list/list';

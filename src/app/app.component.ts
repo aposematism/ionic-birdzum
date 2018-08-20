@@ -13,9 +13,13 @@ import { BrowsePage } from '../pages/browse/browse';
 import { ClassifyPage } from '../pages/classify/classify';
 import { SignupPage } from '../pages/signup/signup';
 
+@Component({
+  templateUrl: 'app.html'
+})
+export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -45,5 +49,4 @@ import { SignupPage } from '../pages/signup/signup';
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
->>>>>>> src/app/app.component.ts
 }
