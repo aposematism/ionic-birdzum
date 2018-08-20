@@ -39,5 +39,12 @@
   <ion-icon name="search"></ion-icon>
     Search
   </button>
+  
+  <ion-list inset>
+    <ion-item *ngFor="let item of searchResults" (click)="edit(item)">
+      {{item.name}}
+    </ion-item>
+  </ion-list>
+
 </ion-content>
 
