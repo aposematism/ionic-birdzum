@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <h3>{{username}}</h3>
+
+  <!--browse/classify buttons-->
+  <button ion-button color="primary" (click)="gotoBrowse()">Browse Birds</button>
+  <button ion-button color="secondary" (click)="gotoClassify()">Classify</button>
+</ion-content>

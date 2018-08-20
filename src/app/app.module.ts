@@ -1,3 +1,4 @@
+<<<<<<< src/app/app.module.ts
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -7,11 +8,15 @@ import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/login/login';
 import { AuthService } from '../providers/authentication/auth.service';
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+import { ListPage } from '../pages/list/list';
+import { BrowsePage } from '../pages/browse/browse';
+import { ClassifyPage } from '../pages/classify/classify';
 import { SignupPage } from '../pages/signup/signup';
 
 import { AngularFireModule } from 'angularfire2';
@@ -30,7 +35,6 @@ export const firebaseConfig = {
     messagingSenderId: "424306382279"
   }
 }
-
 @NgModule({
   declarations: [
     MyApp,
@@ -40,7 +44,10 @@ export const firebaseConfig = {
     TabsPage,
     WelcomePage,
     LoginPage,
-    SignupPage,
+    ListPage,
+    BrowsePage,
+    ClassifyPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -60,6 +67,10 @@ export const firebaseConfig = {
     WelcomePage,
     LoginPage,
     SignupPage,
+    ListPage,
+    BrowsePage,
+    ClassifyPage,
+    SignupPage
   ],
   providers: [
     StatusBar,

@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { WelcomePage } from '../welcome/welcome'
+import { AlertController } from 'ionic-angular';
+import { ListPage } from '../list/list';
+import { SignupPage } from '../signup/signup';
 
 @Component({
   selector: 'page-home',
