@@ -1,30 +1,39 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
-import { ListPage } from '../list/list';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../providers/authentication/auth.service';
+import { ListPage } from '../list/list'
 
+
+@IonicPage()
 @Component({
   selector: 'page-signup',
-  templateUrl: 'signup.html'
+  templateUrl: 'signup.html',
 })
 export class SignupPage {
-
-  email:string;
-  username:string;
-  password:string;
-
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams) {
+  signupError: string;
+  form: FormGroup;
+  constructor(public navCtrl: NavController, public navParams: NavParams, fb: FormBuilder, private auth: AuthService) {
+    this.form = fb.group({
+			email: ['', Validators.compose([Validators.required, Validators.email])],
+			password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+    });
   }
 
-  createAcc(){
-    const alert = this.alertCtrl.create({
-      title: "Account created",
-      subTitle: "Your account has been created. Welcome " + this.username + "!",
-      buttons: ["Continue"]
-    })
-    alert.present();
-
-    // Present the user with the homepage
-    this.navCtrl.setRoot(ListPage, {username: this.username})
+  signup() {
+		let data = this.form.value;
+		let credentials = {
+			email: data.email,
+			password: data.password
+		};
+		this.auth.signUp(credentials).then(
+			() => this.navCtrl.setRoot(ListPage),
+			error => this.signupError = error.message
+		);
   }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad SignupPage');
+  }
+
 }

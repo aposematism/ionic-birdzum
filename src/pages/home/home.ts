@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { WelcomePage } from '../welcome/welcome'
 import { AlertController } from 'ionic-angular';
 import { ListPage } from '../list/list';
 import { SignupPage } from '../signup/signup';
@@ -10,46 +10,23 @@ import { SignupPage } from '../signup/signup';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  username:string = "";
-  password:string = "";
-
-  constructor(public alertCtrl: AlertController, public navCtrl: NavController) {
+  username:any;
+  constructor(public loginAlert : AlertController, public navCtrl: NavController){
 
   }
 
-  login(){
-    // Check validity (TODO)
-    if (this.username == "") {
-      const alert = this.alertCtrl.create({
-        title: "Invalid login",
-        subTitle: "Username cannot be empty.",
-        buttons: ["Continue"]
-      })
-      alert.present();
-    }
-    else if (this.password == "") {
-      const alert = this.alertCtrl.create({
-        title: "Invalid login",
-        subTitle: "Password cannot be empty.",
-        buttons: ["Continue"]
-      })
-      alert.present();
-    }
-    // Log the user in
-    else {      
-		const alert = this.alertCtrl.create({
-        title: "Welcome!",
-        subTitle: "Welcome " + this.username +".",
-        buttons: ["Continue"]
-      })
-      alert.present();
-      this.navCtrl.setRoot(ListPage, {username: this.username})
-    }
+  pushPage(){
+    this.doAlert();
+    this.navCtrl.push(WelcomePage, {username:this.username});
   }
 
-  gotoSignup(){
-    this.navCtrl.push(SignupPage);
+  doAlert(){
+    let alert = this.loginAlert.create({
+     title: 'Welcome!',
+     message: 'Welcome to SWEN325 App, Dear ' + this.username,
+     buttons: ['Ok']
+    });
+    alert.present()
   }
 
 }

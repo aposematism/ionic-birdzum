@@ -1,31 +1,35 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Sign Up</ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<ion-title>Sign up</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <ion-content>
 
-  <h3>Enter the details of your new account below.</h3>
-  <p>When you're finished, click "sign up" to create an account.</p>
+	<form (ngSubmit)="signup()" [formGroup]="form">
+		<ion-list inset>
 
-	<ion-item>
-		<ion-label color="primary" fixed>Username:</ion-label>
-		<ion-input placeholder="Enter your username here" [(ngModel)]="username"></ion-input>
-	</ion-item>
-	<ion-item>
-		<ion-label color="primary" fixed>Password:</ion-label>
-		<ion-input placeholder="Enter your password here" [(ngModel)]="password" type="password"></ion-input>
-	</ion-item>
-	<ion-item>
-		<ion-label color="primary" fixed>Email:</ion-label>
-		<ion-input placeholder="Enter your email here" [(ngModel)]="email" type="email"></ion-input>
-	</ion-item>
+			<ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched']) }">
+				<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+			</ion-item>
 
-  <button ion-button color="primary" (click)="createAcc()">Create account</button>
+			<div ngxErrors="email" #emailErrors="ngxErrors">
+				<div [ngxError]="['email', 'required']" [when]="['touched']">It should be a valid email</div>
+			</div>
 
+			<ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
+				<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+			</ion-item>
+
+			<div ngxErrors="password" #passwordErrors="ngxErrors">
+				<div [ngxError]="['minlength', 'required']" [when]="['touched']">It should be at least 6 characters</div>
+			</div>
+		</ion-list>
+
+		<div padding-horizontal>
+			<div class="form-error">{{signupError}}</div>
+
+			<button ion-button full type="submit" [disabled]="!form.valid">Sign up</button>
+		</div>
+	</form>
 </ion-content>
-

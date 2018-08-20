@@ -1,25 +1,21 @@
 <ion-header>
-<!--
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Login Screen</ion-title>
   </ion-navbar>
-  -->
 </ion-header>
 
 <ion-content padding>
-  <h3>Welcome to the Field Guide!</h3>
-  <h5>Enter your username and password to login.</h5>
-	<ion-item>
-		<ion-label color="primary" fixed>Username:</ion-label>
-		<ion-input placeholder="Enter your username here" [(ngModel)]="username"></ion-input>
-	</ion-item>
-	<ion-item>
-		<ion-label color="primary" fixed>Password:</ion-label>
-		<ion-input placeholder="Enter your password here" [(ngModel)]="password" type="password"></ion-input>
-	</ion-item>
-  <button ion-button color="primary" (click)="login()">Login</button>
-  <button ion-button color="secondary" (click)="gotoSignup()">Sign Up</button>
-</ion-content>
+    <h3>Welcome to the Field Guide!</h3>
+    <h5>Enter your username and password to login.</h5>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Name: </ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+    <button ion-button full (click)="pushPage()">Login In</button>
+    <button ion-button color="dark" (click)="signUp()" full>Sign Up</button>
+  </ion-list>
