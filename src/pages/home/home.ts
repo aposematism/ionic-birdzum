@@ -37,7 +37,13 @@ export class HomePage {
       alert.present();
     }
     // Log the user in
-    else {
+    else {      
+		const alert = this.alertCtrl.create({
+        title: "Welcome!",
+        subTitle: "Welcome " + this.username +".",
+        buttons: ["Continue"]
+      })
+      alert.present();
       this.navCtrl.setRoot(ListPage, {username: this.username})
     }
   }
