@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthService } from '../../providers/authentication/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { WelcomePage } from '../welcome/welcome'
+import { ListPage } from '../list/list'
 import { SignupPage } from '../signup/signup'
 
 
@@ -43,7 +43,7 @@ export class LoginPage {
 		};
 		this.auth.signInWithEmail(credentials)
 			.then(
-				() => this.navCtrl.setRoot(WelcomePage),
+				() => this.navCtrl.setRoot(ListPage),
 				error => this.loginError = error.message
 			);
   }
