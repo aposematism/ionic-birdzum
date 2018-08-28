@@ -16,6 +16,7 @@ import { ListPage } from '../pages/list/list';
 import { BrowsePage } from '../pages/browse/browse';
 import { ClassifyPage } from '../pages/classify/classify';
 import { SignupPage } from '../pages/signup/signup';
+import { BirdviewPage } from '../pages/birdview/birdview';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
@@ -45,7 +46,8 @@ export const firebaseConfig = {
     ListPage,
     BrowsePage,
     ClassifyPage,
-    SignupPage
+    SignupPage,
+	BirdviewPage
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ export const firebaseConfig = {
     ListPage,
     BrowsePage,
     ClassifyPage,
-    SignupPage
+    SignupPage,
+	BirdviewPage
   ],
   providers: [
     StatusBar,

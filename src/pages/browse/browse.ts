@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { ClassifyPage } from '../classify/classify';
 import { LoadingController } from 'ionic-angular';
+import { BirdviewPage } from '../birdview/birdview';
 
 @Component({
   selector: 'page-browse',
@@ -9,6 +9,7 @@ import { LoadingController } from 'ionic-angular';
 })
 export class BrowsePage {
   
+  searchResultText:string = "0 results found";
   nativity:string = "any";
   activity:string = "any";
   habitat:string = "any";
@@ -30,9 +31,9 @@ export class BrowsePage {
 	let birds = this.getBirds(this.nativity, this.activity, this.habitat);
 	console.log(birds);
 	this.searchResults = birds;
-	// Construct items for the birds and add them to the page below the search
-	// controls:
 	
+	// update search result text
+	this.searchResultText = this.searchResults.length + " results found";
 	
   }
   
@@ -46,7 +47,10 @@ export class BrowsePage {
 			habitat:"land",
 			nativity:"native",
 			description:"Small and brown with a long beak.",
-			img:"img/thumbnail-kiwi.png"
+			img:"img/thumbnail-kiwi.png",
+			
+			behaviourdesc: "Forages around at night, looking for bugs which it hunts with its keen sense of smell. Sleeps during the day.",
+			habitatdesc: "Bushy areas with minimal predators."
 		},
 		{
 			name:"Kereru",
@@ -54,7 +58,10 @@ export class BrowsePage {
 			habitat:"land",
 			nativity:"native",
 			description:"Big, fat, likes berries.",
-			img:"img/thumbnail-kereru.png"
+			img:"img/thumbnail-kereru.png",
+			
+			behaviourdesc: "Sits on branches during the day, straining them with its immense weight. Kereru often eat berries, particularly fermented ones which they get drunk from.",
+			habitatdesc: "Forested areas."
 		},
 		{
 			name:"Seagull",
@@ -62,7 +69,10 @@ export class BrowsePage {
 			habitat:"sea",
 			nativity:"foreign",
 			description:"Steals chips.",
-			img:"img/thumbnail-seagull.png"
+			img:"img/thumbnail-seagull.png",
+			
+			behaviourdesc: "Flies around coastal areas looking for delicious chips to steal from their main prey: unsuspecting families having picnics. Often gulls can be found screeching at each other for no good reason and sitting around looking stupid.",
+			habitatdesc: "Coastal areas, where chip-based picnics are common."
 		},
 		{
 			name:"Pigeon",
@@ -70,7 +80,10 @@ export class BrowsePage {
 			habitat:"land",
 			nativity:"foreign",
 			description:"Crrroooo",
-			img:"img/thumbnail-pigeon.png"
+			img:"img/thumbnail-pigeon.png",
+			
+			behaviourdesc: "Waddles around cities looking for dropped breadcrumbs, scooting between people's legs as they navigate the dangerous streets.",
+			habitatdesc: "Cities with abundant nesting spots."
 		}
 	
 	]; 
@@ -101,5 +114,10 @@ export class BrowsePage {
 	}	
 	
 	return selectBirds;
+  }
+  
+  viewBird(bird){
+	  console.log("You clicked: " + bird.name);
+	  this.navCtrl.push(BirdviewPage, {item: bird})
   }
 }

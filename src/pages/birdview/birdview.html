@@ -1,0 +1,27 @@
+<!--
+  Generated template for the BirdviewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{bird.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-thumbnail item-start>
+      <img src={item.img}}>
+    </ion-thumbnail>
+	
+	<p> {{bird.description}} </p>
+	<h4> Behaviour </h4>
+	<p> {{bird.behaviourdesc}}</p>
+	<h4> Habitat </h4>
+	<p> {{bird.habitatdesc}}</p>
+	
+</ion-content>

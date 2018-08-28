@@ -15,7 +15,6 @@ export class ListPage {
   }
 
   gotoBrowse(){
-    console.log("Pushing browse page...");
     this.navCtrl.push(BrowsePage, {});
   }
   gotoClassify(){

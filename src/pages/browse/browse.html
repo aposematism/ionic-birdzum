@@ -35,19 +35,20 @@
   </ion-item>
   </ion-list>
   
-  <button ion-button (click)="search()" icon-start>
+  <button ion-button full round (click)="search()" icon-start>
   <ion-icon name="search"></ion-icon>
     Search
   </button>
    
   <ion-list inset>
-    <ion-item *ngFor="let item of searchResults" (click)="edit(item)">
+	<h4>{{ searchResultText }}</h4>
+    <ion-item *ngFor="let item of searchResults">
     <ion-thumbnail item-start>
       <img src={{item.img}}>
     </ion-thumbnail>
     <h2>{{ item.name }}</h2>
     <p>{{ item.description }}</p>
-    <button ion-button clear item-end>View</button>
+    <button ion-button round item-end (click)="viewBird(item)">More</button>
     </ion-item>
   </ion-list>
 
