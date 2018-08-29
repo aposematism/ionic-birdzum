@@ -33,6 +33,14 @@
       <ion-option value="any">Any</ion-option>
     </ion-select>
   </ion-item>
+  <ion-item>
+    <ion-label>Flying</ion-label>
+    <ion-select [(ngModel)]="flying" interface="popover">
+      <ion-option value="flying">Flying</ion-option>
+      <ion-option value="flightless">Flightless</ion-option>
+      <ion-option value="any">Any</ion-option>
+    </ion-select>
+  </ion-item>
   </ion-list>
   
   <button ion-button full round (click)="search()" icon-start>

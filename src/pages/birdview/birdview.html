@@ -14,10 +14,27 @@
 
 
 <ion-content padding>
+
     <ion-thumbnail item-start>
       <img src={item.img}}>
-    </ion-thumbnail>
+	</ion-thumbnail>
 	
+	<!-- The basic info table for the bird -->
+	<ion-card>
+		<ion-card-content>
+			<ion-card-title>
+			{{bird.name}} Facts
+			</ion-card-title>
+			<ion-list>
+			<h4>Habitat:\t{{bird.habitat}}</h4>
+			<h4>Nativity:\t{{bird.nativity}}</h4>
+			<h4>Activity:\t{{bird.activity}}</h4>
+			<h4>Flying:\t{{bird.flying}}</h4>
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+	
+	<!-- Expanded information on the bird-->
 	<p> {{bird.description}} </p>
 	<h4> Behaviour </h4>
 	<p> {{bird.behaviourdesc}}</p>

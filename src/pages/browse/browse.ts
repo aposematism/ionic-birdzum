@@ -13,6 +13,7 @@ export class BrowsePage {
   nativity:string = "any";
   activity:string = "any";
   habitat:string = "any";
+  flying:string = "any";
   searchResults:any[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
@@ -28,7 +29,7 @@ export class BrowsePage {
 	    
 	console.log("Searching...");
     // Get the birds (just use a dummy function for now)
-	let birds = this.getBirds(this.nativity, this.activity, this.habitat);
+	let birds = this.getBirds(this.nativity, this.activity, this.habitat, this.flying);
 	console.log(birds);
 	this.searchResults = birds;
 	
@@ -38,7 +39,7 @@ export class BrowsePage {
   }
   
   /*Dummy method until firebase is properly set up and populated*/
-  getBirds(n, a, h){
+  getBirds(n, a, h, f){
 	let allBirds = [
 	
 		{
@@ -46,6 +47,7 @@ export class BrowsePage {
 			activity:"nocturnal",
 			habitat:"land",
 			nativity:"native",
+			flying:"flightless",
 			description:"Small and brown with a long beak.",
 			img:"img/thumbnail-kiwi.png",
 			
@@ -57,6 +59,7 @@ export class BrowsePage {
 			activity:"diurnal",
 			habitat:"land",
 			nativity:"native",
+			flying:"flying",
 			description:"Big, fat, likes berries.",
 			img:"img/thumbnail-kereru.png",
 			
@@ -68,6 +71,7 @@ export class BrowsePage {
 			activity:"diurnal",
 			habitat:"sea",
 			nativity:"foreign",
+			flying:"flying",
 			description:"Steals chips.",
 			img:"img/thumbnail-seagull.png",
 			
@@ -78,6 +82,7 @@ export class BrowsePage {
 			name:"Pigeon",
 			activity:"diurnal",
 			habitat:"land",
+			flying:"flying",
 			nativity:"foreign",
 			description:"Crrroooo",
 			img:"img/thumbnail-pigeon.png",
@@ -109,6 +114,14 @@ export class BrowsePage {
 	// exclude by nativity
 	for(let i in allBirds){
 		if(allBirds[i].nativity == n || n == "any"){
+			selectBirds.push(allBirds[i]);
+		}
+	}	
+	allBirds = selectBirds;
+	selectBirds = [];	
+	// exclude by flightlessness
+	for(let i in allBirds){
+		if(allBirds[i].flying == f || f == "any"){
 			selectBirds.push(allBirds[i]);
 		}
 	}	
