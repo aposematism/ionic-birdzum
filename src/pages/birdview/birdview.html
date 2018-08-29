@@ -9,7 +9,14 @@
   <ion-navbar>
     <ion-title>{{bird.name}}</ion-title>
   </ion-navbar>
-
+  
+  <!-- Leaflet imports, for the map functionality -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+		integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+		crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+		integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+		crossorigin=""></script>
 </ion-header>
 
 
@@ -34,11 +41,15 @@
 		</ion-card-content>
 	</ion-card>
 	
-	<!-- Expanded information on the bird-->
+	<!-- Expanded information on the bird -->
 	<p> {{bird.description}} </p>
 	<h4> Behaviour </h4>
 	<p> {{bird.behaviourdesc}}</p>
 	<h4> Habitat </h4>
 	<p> {{bird.habitatdesc}}</p>
 	
+	<!-- Map of recent sightings -->
+	<div id="map" style="height: 180px;"></div>	
 </ion-content>
+
+
