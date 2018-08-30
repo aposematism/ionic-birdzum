@@ -17,6 +17,7 @@ import L from "leaflet";
 export class BirdviewPage {
 	map: L.Map;
 	mapCenter: L.PointTuple = [-41.288889, 174.777222];
+	bird: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 	  this.bird = navParams.get("item");
@@ -36,9 +37,14 @@ export class BirdviewPage {
 	console.log("Map initialized");
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
 	this.initMap();
-    console.log('ionViewDidLoad BirdviewPage');
+    console.log('ionViewDidEnter BirdviewPage');
+  }
+  
+  ionViewWillLeave() {
+	this.map.off();
+	this.map.remove();
   }
 
   //this.initMap();

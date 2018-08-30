@@ -9,7 +9,7 @@ import { BirdviewPage } from '../birdview/birdview';
 })
 export class BrowsePage {
   
-  searchResultText:string = "0 results found";
+  searchResultText:string = "<i>Tap 'search' to find birds</i>";
   nativity:string = "any";
   activity:string = "any";
   habitat:string = "any";

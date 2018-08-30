@@ -3,14 +3,39 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <!--<ion-title>List</ion-title>-->
   </ion-navbar>
+  
+  <!-- Leaflet imports, for the map functionality -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+		integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+		crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+		integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+		crossorigin=""></script>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <h3>{{username}}</h3>
-
-  <!--browse/classify buttons-->
-  <button ion-button color="primary" (click)="gotoBrowse()">Browse Birds</button>
-  <button ion-button color="secondary" (click)="gotoClassify()">Classify</button>
+  
+  <!-- Map of recent sightings -->
+  <h4> Sightings Near You </h4>
+  <div id="map" style="height: 78%;"></div>
+  <!--browse/classify buttons-->  
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+	    <button ion-button block color="primary"(click)="gotoClassify()" icon-start>
+		  <ion-icon name="camera"></ion-icon>
+		  Classify
+		</button>
+      </ion-col>
+      <ion-col>
+	      <button ion-button block color="primary"(click)="gotoBrowse()" icon-end>
+		    Browse
+		    <ion-icon name="book"></ion-icon>
+		  </button>
+	  </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

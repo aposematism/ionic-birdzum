@@ -4,6 +4,7 @@ import { AuthService } from '../../providers/authentication/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ListPage } from '../list/list'
 import { SignupPage } from '../signup/signup'
+import { AlertController } from 'ionic-angular';
 
 
 /**
@@ -23,7 +24,7 @@ export class LoginPage {
 	loginError: string;
 
 
-  constructor(private navCtrl: NavController, private auth: AuthService, fb: FormBuilder) {
+  constructor(private navCtrl: NavController, private auth: AuthService, fb: FormBuilder, public loginAlert : AlertController) {
     this.loginForm = fb.group({
 			email: ['', Validators.compose([Validators.required, Validators.email])],
 			password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
@@ -46,6 +47,13 @@ export class LoginPage {
 				() => this.navCtrl.setRoot(ListPage),
 				error => this.loginError = error.message
 			);
+		// display welcome message
+		let alert = this.loginAlert.create({
+			title: 'Welcome!',
+			message: 'Welcome back to The Aviary, ' + this.username + "!",
+			buttons: ['Ok']
+		});
+    alert.present()
   }
 
   signup(){
