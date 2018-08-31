@@ -1,0 +1,29 @@
+<!--
+  This is the camera page. It allows taking photos to be uploaded to a server.
+-->
+<ion-navbar *navbar>
+  <ion-title>
+    Home
+  </ion-title>
+</ion-navbar>
+
+<ion-content class="home">
+  <ion-card>
+    <ion-card-content>
+      <h3>Camera for photographing Birds!</h3>
+    </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+	       <button ion-button block color="primary"(click)="takePicture()">Take a Picture</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Latest Picture:
+        <img [src]="base64Image" *ngIf="base64Image" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

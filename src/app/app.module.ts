@@ -17,6 +17,7 @@ import { BrowsePage } from '../pages/browse/browse';
 import { ClassifyPage } from '../pages/classify/classify';
 import { SignupPage } from '../pages/signup/signup';
 import { BirdviewPage } from '../pages/birdview/birdview';
+import { CameraPage } from '../pages/camera/camera';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
@@ -25,6 +26,7 @@ import { AngularFireStorageModule, AngularFireStorage} from 'angularfire2/storag
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { Leaflet } from  'leaflet';
+import { Camera } from '@ionic-native/camera';
 
 
 export const firebaseConfig = {
@@ -50,6 +52,7 @@ export const firebaseConfig = {
     BrowsePage,
     ClassifyPage,
     SignupPage,
+    CameraPage,
 	BirdviewPage
   ],
   imports: [
@@ -76,6 +79,7 @@ export const firebaseConfig = {
     BrowsePage,
     ClassifyPage,
     SignupPage,
+    CameraPage,
 	BirdviewPage
   ],
   providers: [
@@ -85,6 +89,7 @@ export const firebaseConfig = {
     AuthService,
     AngularFireStorage,
     AngularFirestore,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })

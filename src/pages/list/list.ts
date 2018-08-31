@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {BrowsePage} from '../browse/browse';
 import {ClassifyPage} from '../classify/classify';
+import {CameraPage} from '../camera/camera';
 import L from "leaflet";
 
 
@@ -23,6 +24,9 @@ export class ListPage {
   }
   gotoClassify(){
     this.navCtrl.setRoot(ClassifyPage, {});
+  }
+  gotoCamera(){
+    this.navCtrl.setRoot(CameraPage, {});
   }
 
   initMap(){

@@ -5,7 +5,7 @@
     </button>
     <!--<ion-title>List</ion-title>-->
   </ion-navbar>
-  
+
   <!-- Leaflet imports, for the map functionality -->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
 		integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
@@ -17,25 +17,25 @@
 
 <ion-content padding>
   <h3>{{username}}</h3>
-  
+
   <!-- Map of recent sightings -->
   <h4> Sightings Near You </h4>
   <div id="map" style="height: 78%;"></div>
-  <!--browse/classify buttons-->  
+  <!--browse/classify buttons-->
   <ion-grid>
     <ion-row>
       <ion-col>
-	    <button ion-button block color="primary"(click)="gotoClassify()" icon-start>
-		  <ion-icon name="camera"></ion-icon>
-		  Classify
-		</button>
+	    <button ion-button block color="primary"(click)="gotoCamera()" icon-start>
+		      <ion-icon name="camera"></ion-icon>
+		        Classify
+		      </button>
       </ion-col>
       <ion-col>
 	      <button ion-button block color="primary"(click)="gotoBrowse()" icon-end>
-		    Browse
-		    <ion-icon name="book"></ion-icon>
-		  </button>
-	  </ion-col>
+		        Browse
+		        <ion-icon name="book"></ion-icon>
+		    </button>
+	    </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
