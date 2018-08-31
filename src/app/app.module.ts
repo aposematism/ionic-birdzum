@@ -20,6 +20,8 @@ import { BirdviewPage } from '../pages/birdview/birdview';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFirestore, AngularFirestoreModule} from 'angularfire2/firestore';
+import { AngularFireStorageModule, AngularFireStorage} from 'angularfire2/storage'
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { Leaflet } from  'leaflet';
@@ -56,6 +58,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig.fire),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
     NgxErrorsModule
   ],
   bootstrap: [IonicApp],
@@ -79,6 +83,8 @@ export const firebaseConfig = {
     SplashScreen,
     AngularFireDatabase,
     AuthService,
+    AngularFireStorage,
+    AngularFirestore,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })

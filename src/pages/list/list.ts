@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {BrowsePage} from '../browse/browse';
 import {ClassifyPage} from '../classify/classify';
+import L from "leaflet";
+
 
 @Component({
   selector: 'page-list',
@@ -22,7 +24,7 @@ export class ListPage {
   gotoClassify(){
     this.navCtrl.setRoot(ClassifyPage, {});
   }
-   
+
   initMap(){
 	this.map = L.map('map', {
 		center: this.mapCenter,
@@ -36,12 +38,12 @@ export class ListPage {
 	}).addTo(this.map);
 	console.log("Map initialized");
   }
-  
+
   ionViewDidEnter() {
 	this.initMap();
     console.log('ionViewDidEnter ListPage');
   }
-  
+
   ionViewWillLeave() {
 	this.map.off();
 	this.map.remove();

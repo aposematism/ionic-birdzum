@@ -42,17 +42,17 @@
     </ion-select>
   </ion-item>
   </ion-list>
-  
+
   <button ion-button full round (click)="search()" icon-start>
   <ion-icon name="search"></ion-icon>
     Search
   </button>
-   
+
   <ion-list inset>
 	<h4>{{ searchResultText }}</h4>
     <ion-item *ngFor="let item of searchResults">
     <ion-thumbnail item-start>
-      <img src={{item.img}}>
+      <ion-img width="80" height="80" src="showImg | async"></ion-img>
     </ion-thumbnail>
     <h2>{{ item.name }}</h2>
     <p>{{ item.description }}</p>
@@ -61,4 +61,3 @@
   </ion-list>
 
 </ion-content>
-
