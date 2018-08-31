@@ -50,7 +50,7 @@ export class LoginPage {
 		// display welcome message
 		let alert = this.loginAlert.create({
 			title: 'Welcome!',
-			message: 'Welcome back to The Aviary, ' + this.username + "!",
+			message: 'Welcome back to The Aviary!',
 			buttons: ['Ok']
 		});
     alert.present()
