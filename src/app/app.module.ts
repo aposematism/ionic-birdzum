@@ -29,7 +29,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { Leaflet } from  'leaflet';
 import { Camera } from '@ionic-native/camera';
-
+import { Geolocation } from '@ionic-native/geolocation';
 
 export const firebaseConfig = {
   fire: {
@@ -94,6 +94,7 @@ export const firebaseConfig = {
     AuthService,
     AngularFireStorage,
     AngularFirestore,
+    Geolocation,
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]

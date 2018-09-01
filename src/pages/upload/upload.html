@@ -22,20 +22,15 @@
         <div class="uploadForm">
           <label for="file">File:</label>
           <input #file name="file" type="file" (change)="previewFile($event)" />
-          <button (click)="uploadFile($event)">Upload</button>
+          <button ion-button block color="primary" (click)="uploadFile($event)">Upload</button>
           <app-progress-bar [percentage]="uploadPercent | async">
           </app-progress-bar>
           <a [href]="uploadURL | async">{{uploadURL | async}}</a>
+          <h4> Latest Picture: </h4>
           <div class="preview">
             <img [src]="previewURL | async" />
           </div>
-      </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        Latest Picture:
-        <img [src]="base64Image" *ngIf="base64Image" />
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
