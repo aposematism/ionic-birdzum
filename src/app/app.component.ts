@@ -12,6 +12,8 @@ import { ListPage } from '../pages/list/list';
 import { BrowsePage } from '../pages/browse/browse';
 import { ClassifyPage } from '../pages/classify/classify';
 import { SignupPage } from '../pages/signup/signup';
+import { CameraPage } from '../pages/camera/camera';
+import { UploadPage } from '../pages/upload/upload';
 
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +32,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: ListPage },
       { title: 'Browse', component: BrowsePage },
-      { title: 'Classify', component: ClassifyPage }
+      { title: 'Classify', component: CameraPage },
+      { title: 'Upload', component: UploadPage }
     ];
 
   }

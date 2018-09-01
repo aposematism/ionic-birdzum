@@ -18,6 +18,8 @@ import { ClassifyPage } from '../pages/classify/classify';
 import { SignupPage } from '../pages/signup/signup';
 import { BirdviewPage } from '../pages/birdview/birdview';
 import { CameraPage } from '../pages/camera/camera';
+import { UploadPage } from '../pages/upload/upload'
+import { ProgressBarComponent } from '../pages/upload/progress-bar/progress-bar.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
@@ -52,7 +54,9 @@ export const firebaseConfig = {
     BrowsePage,
     ClassifyPage,
     SignupPage,
+    UploadPage,
     CameraPage,
+    ProgressBarComponent,
 	BirdviewPage
   ],
   imports: [
@@ -80,6 +84,7 @@ export const firebaseConfig = {
     ClassifyPage,
     SignupPage,
     CameraPage,
+    UploadPage,
 	BirdviewPage
   ],
   providers: [
