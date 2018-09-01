@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <!--<ion-title>List</ion-title>-->
+    <ion-title>The Aviary</ion-title>
   </ion-navbar>
 
   <!-- Leaflet imports, for the map functionality -->
@@ -15,14 +15,15 @@
 		crossorigin=""></script>
 </ion-header>
 
-<ion-content padding>
-  <h3>{{username}}</h3>
+<ion-content>
 
   <!-- Map of recent sightings -->
-  <h4> Sightings Near You </h4>
+  <ion-item text-center> <h2> <b>
+    Sightings Near You
+  </b></h2></ion-item>
   <div id="map" style="height: 78%;"></div>
   <!--browse/classify buttons-->
-  <ion-grid>
+  <ion-grid no-padding>
     <ion-row>
       <ion-col>
 	    <button ion-button block color="primary"(click)="gotoCamera()" icon-start>
