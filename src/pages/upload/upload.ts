@@ -15,7 +15,7 @@ import { Geolocation } from '@ionic-native/geolocation';
  * Ionic pages and navigation.
  */
 
-export interface geotaginfo { id: string, img: string, latitude: number, longitude: number }
+export interface geotaginfo { id: string, img: string}
 
 @IonicPage()
 @Component({
@@ -71,21 +71,24 @@ export class UploadPage {
     task.snapshotChanges().pipe(
         finalize(() => {
           this.uploadURL = fileRef.getDownloadURL();
+
         } )
     ).subscribe();
-
-    //this.geoTagUpload();
+    this.uploadURL.subscribe(res => {
+      this.downloadURL = res;
+    });
+    //this.geoTagUpload(); //Unfortunately this is broken. But I have run out of time relative to 
     }
 
     geoTagUpload(){
       const id = this.afs.createId();
       const img = this.downloadURL;
-      const latitude = this.lat;
-      const longitude = this.long;
-      console.log(this.lat);
-      console.log(this.long);
-      const item: geotaginfo = { id, img, latitude, longitude};
-      this.itemsCollection.doc(id).set(item).then(function() {
+      //const latitude = this.lat;
+      //const longitude = this.long;
+      //console.log(this.lat);
+      //console.log(this.long);
+      const item: geotaginfo = { id, img};
+      this.itemsCollection.doc(id).set(Object.assign({}, item)).then(function() {
         console.log("Document successfully written!");
       })
       .catch(function(error) {
