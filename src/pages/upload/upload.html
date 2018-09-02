@@ -5,14 +5,33 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>upload</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Upload
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="uploadForm">
+          <label for="file">File:</label>
+          <input #file name="file" type="file" (change)="previewFile($event)" />
+          <button ion-button block color="primary" (click)="uploadFile($event)">Upload</button>
+          <app-progress-bar [percentage]="uploadPercent | async">
+          </app-progress-bar>
+          <a [href]="uploadURL | async">{{uploadURL | async}}</a>
+          <h4> Latest Picture: </h4>
+          <div class="preview">
+            <img [src]="previewURL | async" />
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
