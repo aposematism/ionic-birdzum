@@ -57,11 +57,8 @@ export class ListPage {
         let markerGroup = L.featureGroup();
         var lat = parseFloat(singleMarker.latitude);
         var long = parseFloat(singleMarker.longitude);
-        let marker: any = L
-        .marker([lat, long])
-          .on("click", () => {
-            alert("Clicked on a marker!");
-          });
+        let marker: any = L.marker([lat, long]);
+        marker.bindPopup("<img style=max-height:500px;max-width:500px; src='" + singleMarker.img + "'/>", {maxWidth : 600}).openPopup();
         markerGroup.addLayer(marker);
         this.map.addLayer(markerGroup);
       });
