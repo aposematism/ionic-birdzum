@@ -48,7 +48,6 @@ export class BrowsePage {
   	//console.log(birds);
   	this.searchResults = birds;
 
-
   	// update search result text
   	this.searchResultText = "Results found";
   }
