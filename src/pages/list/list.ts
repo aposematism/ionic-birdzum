@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {BrowsePage} from '../browse/browse';
-import {ClassifyPage} from '../classify/classify';
-import {CameraPage} from '../camera/camera';
+import { BrowsePage } from '../browse/browse';
+import { ClassifyPage } from '../classify/classify';
+import { CameraPage } from '../camera/camera';
+import { UploadPage } from '../upload/upload'
 
 import L from "leaflet";
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -32,8 +33,8 @@ export class ListPage {
   gotoBrowse(){
     this.navCtrl.setRoot(BrowsePage, {});
   }
-  gotoClassify(){
-    this.navCtrl.setRoot(ClassifyPage, {});
+  gotoUpload(){
+    this.navCtrl.setRoot(UploadPage, {});
   }
   gotoCamera(){
     this.navCtrl.setRoot(CameraPage, {});
