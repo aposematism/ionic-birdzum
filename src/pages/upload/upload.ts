@@ -15,7 +15,7 @@ import { Geolocation } from '@ionic-native/geolocation';
  * Ionic pages and navigation.
  */
 
-export interface geotaginfo { id: string, img: string}
+export interface geotaginfo { id: string, img: string, latitude: number, longitude: number}
 
 @IonicPage()
 @Component({
@@ -29,7 +29,7 @@ export class UploadPage {
   uploadURL: Observable<string>;
   lat: number;
   long: number;
-  downloadURL: string;
+  imageURL: string;
   items: Observable<geotaginfo[]>;
 
   private itemsCollection: AngularFirestoreCollection<geotaginfo>;
@@ -71,23 +71,29 @@ export class UploadPage {
     task.snapshotChanges().pipe(
         finalize(() => {
           this.uploadURL = fileRef.getDownloadURL();
-
+          this.getLoc();
+          this.uploadURL.subscribe(url => {//Wait until the URL is returned.
+            this.imageURL = url;
+            this.geolocation.getCurrentPosition().then((resp) => {//Wait until the lat and long are returned.
+              this.lat = resp.coords.latitude;
+              this.long = resp.coords.longitude;
+              this.geoTagUpload();
+            }).catch((error) => {
+              console.log('Error getting location', error);
+            });
+          });
         } )
     ).subscribe();
-    this.uploadURL.subscribe(res => {
-      this.downloadURL = res;
-    });
-    //this.geoTagUpload(); //Unfortunately this is broken. But I have run out of time relative to 
     }
 
     geoTagUpload(){
       const id = this.afs.createId();
-      const img = this.downloadURL;
-      //const latitude = this.lat;
-      //const longitude = this.long;
-      //console.log(this.lat);
-      //console.log(this.long);
-      const item: geotaginfo = { id, img};
+      const img = this.imageURL;
+      const latitude = this.lat;
+      const longitude = this.long;
+      console.log(this.lat);
+      console.log(this.long);
+      const item: geotaginfo = { id: id, img: img, latitude: latitude, longitude: longitude};
       this.itemsCollection.doc(id).set(Object.assign({}, item)).then(function() {
         console.log("Document successfully written!");
       })
@@ -97,12 +103,7 @@ export class UploadPage {
     }
 
     getLoc(){//This gets the current location of the person using the software.
-      this.geolocation.getCurrentPosition().then((resp) => {
-      this.lat = resp.coords.latitude;
-      this.long = resp.coords.longitude;
-    }).catch((error) => {
-      console.log('Error getting location', error);
-      });
+
     }
 
 

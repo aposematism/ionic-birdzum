@@ -30,15 +30,15 @@ export class ListPage {
   }
 
   initMap(){
-	this.map = L.map('map', {
-		center: this.mapCenter,
-		zoom: 10
-	});
-	// create the tile layer with correct attribution
-	var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-	var osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
-	var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 12, attribution: osmAttrib}).addTo(this.map);	
-	console.log("Map initialized");
+  	this.map = L.map('map', {
+  		center: this.mapCenter,
+  		zoom: 10
+  	});
+  	// create the tile layer with correct attribution
+  	var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  	var osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
+  	var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 12, attribution: osmAttrib}).addTo(this.map);
+  	console.log("Map initialized");
   }
 
   ionViewDidEnter() {
