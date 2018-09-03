@@ -23,8 +23,8 @@ export class BrowsePage {
   showImg: Observable<string | null>;
 
   private birdCol: AngularFirestoreCollection<birdItem>;
-  itemsObservable: Observable<birdItem[]>;
-  items: birdItem[];
+  private itemsObservable: Observable<birdItem[]>;
+  private items: birdItem[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, private afs: AngularFirestore, private storage: AngularFireStorage) {
     this.birdCol = afs.collection<birdItem>('birdinfo');

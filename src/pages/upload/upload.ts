@@ -74,7 +74,7 @@ export class UploadPage {
           this.getLoc();
           this.uploadURL.subscribe(url => {//Wait until the URL is returned.
             this.imageURL = url;
-            this.geolocation.getCurrentPosition().then((resp) => {//Wait until the lat and log
+            this.geolocation.getCurrentPosition().then((resp) => {//Wait until the lat and long
               this.lat = resp.coords.latitude;
               this.long = resp.coords.longitude;
               this.geoTagUpload();

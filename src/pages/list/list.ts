@@ -3,8 +3,12 @@ import { NavController, NavParams } from 'ionic-angular';
 import {BrowsePage} from '../browse/browse';
 import {ClassifyPage} from '../classify/classify';
 import {CameraPage} from '../camera/camera';
-import L from "leaflet";
 
+import L from "leaflet";
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
+
+export interface geotaginfo { id: string, img: string, latitude: number, longitude: number}
 
 @Component({
   selector: 'page-list',
@@ -14,9 +18,15 @@ export class ListPage {
   username:string;
   map: L.Map;
   mapCenter: L.PointTuple = [-41.288889, 174.777222];
+  private itemsCollection: AngularFirestoreCollection<geotaginfo>;
+  private itemsObservable: Observable<geotaginfo[]>;
+  private items: geotaginfo[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private afs : AngularFirestore) {
     this.username = navParams.get("username");
+    this.itemsCollection = this.afs.collection<geotaginfo>("geotags");
+    this.itemsObservable = this.itemsCollection.valueChanges();
   }
 
   gotoBrowse(){
@@ -37,13 +47,31 @@ export class ListPage {
 	// create the tile layer with correct attribution
 	var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	var osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
-	var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 12, attribution: osmAttrib}).addTo(this.map);	
+	var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 12, attribution: osmAttrib}).addTo(this.map);
 	console.log("Map initialized");
+  }
+
+  loadMarkers(){
+    this.itemsObservable.subscribe((markers: any) => {
+      markers.forEach(singleMarker => {
+        let markerGroup = L.featureGroup();
+        var lat = parseFloat(singleMarker.latitude);
+        var long = parseFloat(singleMarker.longitude);
+        let marker: any = L
+        .marker([lat, long])
+          .on("click", () => {
+            alert("Clicked on a marker!");
+          });
+        markerGroup.addLayer(marker);
+        this.map.addLayer(markerGroup);
+      });
+    });
   }
 
   ionViewDidEnter() {
 	this.initMap();
-    console.log('ionViewDidEnter ListPage');
+  console.log('ionViewDidEnter ListPage');
+  this.loadMarkers();
   }
 
   ionViewWillLeave() {
